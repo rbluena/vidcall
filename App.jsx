@@ -1,22 +1,13 @@
 /* eslint-disable react/style-prop-object */
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import AppLoader from '~/app/components/AppLoader';
 import Landing from '~/app/screens/Landing';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <AppLoader>
       <Landing />
       <StatusBar style="auto" />
-    </View>
+    </AppLoader>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

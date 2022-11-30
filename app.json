@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "vidcall",
+    "name": "Vidcall",
     "slug": "vidcall",
     "description": "Phone call application for everyone.",
     "version": "1.0.0",
@@ -25,9 +25,18 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.rbluena.vidcall",
-      "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
       "permissions": ["CAMERA", "READ_CONTACTS", "STORAGE", "READ_PHONE_STATE"]
     },
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Vidcall would like to access your photos."
+        }
+      ]
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }
