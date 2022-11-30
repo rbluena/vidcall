@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "879460210771",
+    "project_id": "vidcall-1332e",
+    "storage_bucket": "vidcall-1332e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879460210771:android:2aa3c72c57860e86bf4ea6",
+        "android_client_info": {
+          "package_name": "com.rbluena.vidcall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879460210771-o2cqe327jvkdgnnkt3agl79pig9rb2s1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rbluena.vidcall",
+            "certificate_hash": "8bb237053678a099eeff11b0c4d1ffda234338d6"
+          }
+        },
+        {
+          "client_id": "879460210771-1o80me2o6t9g2d6m9boa32d37hevfbn5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzd8zvneq0FJRKBVAiBN06WRv0aupN-Kk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879460210771-1o80me2o6t9g2d6m9boa32d37hevfbn5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
