@@ -1,12 +1,16 @@
 import { View, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Logo from '~/app/components/common/Logo';
 import { SCREEN } from '~/app/constants';
 import { COLORS, FONT_SIZE, SPACING } from '~/app/style/theme';
 import { BlockButton, Text } from '~/app/components/common';
+import { useNavigation } from '@react-navigation/native';
 
 const Landing = () => {
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Logo />
         <Text variant="primary" style={styles.logoText}>
@@ -19,12 +23,16 @@ const Landing = () => {
       </View>
 
       <View style={styles.footer}>
-        <BlockButton label="Continue" outlined />
+        <BlockButton
+          label="Continue"
+          outlined
+          onPress={() => navigation.navigate('Register')}
+        />
         <Text align="center" variant="muted">
           By tapping continue button, you agree and accept our terms and policy.
         </Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
