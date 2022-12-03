@@ -1,7 +1,7 @@
 import { StyleSheet, Text, Pressable, ActivityIndicator } from 'react-native';
 import PropTypes from 'prop-types';
 import { SCREEN } from '~/app/constants';
-import { COLORS } from '~/app/style/theme';
+import { COLORS, FONT_SIZE, SPACING } from '~/app/style/theme';
 
 const BlockButton = ({
   label,
@@ -11,22 +11,29 @@ const BlockButton = ({
   style: externalStyle,
   ...rest
 }) => {
-  const stylingLabel = [styles.label];
-  const stylingWrapper = [styles.wrapper];
-  const styleIndicator = [styles.indicator];
+  let stylingLabel = {};
+  let stylingWrapper = {};
+  let styleIndicator = {};
 
   if (outlined) {
-    stylingWrapper.push({ borderColor: COLORS.slate[200] });
-    stylingLabel.push({ color: COLORS.slate[800] });
-    styleIndicator.push({ color: COLORS.slate[800] });
+    stylingWrapper = { ...stylingWrapper, borderColor: COLORS.slate[200] };
+    styleIndicator = { ...styleIndicator, color: COLORS.slate[800] };
+    stylingLabel = { ...stylingLabel, color: COLORS.slate[800] };
   }
 
   return (
-    <Pressable onPress={onPress} style={stylingWrapper} {...rest}>
+    <Pressable
+      onPress={onPress}
+      style={[styles.wrapper, stylingWrapper]}
+      android_ripple={{
+        radius: SPACING.s,
+        color: COLORS.slate[100],
+      }}
+      {...rest}>
       {showLoader ? (
-        <ActivityIndicator style={styleIndicator} />
+        <ActivityIndicator style={[styles.indicator, styleIndicator]} />
       ) : (
-        <Text style={stylingLabel}>{label}</Text>
+        <Text style={[styles.label, stylingLabel]}>{label}</Text>
       )}
     </Pressable>
   );
@@ -62,6 +69,9 @@ const styles = StyleSheet.create({
   },
   label: {
     textAlign: 'center',
+    color: COLORS.slate[0],
+    fontWeight: 'bold',
+    fontSize: FONT_SIZE.m,
   },
   indicator: {},
 });
