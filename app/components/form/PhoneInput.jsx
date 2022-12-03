@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     backgroundColor: COLORS.slate[200],
     padding: 4,
-    // padding: SPACING.s,
   },
   textStyle: {
     fontSize: 20,
@@ -48,6 +47,6 @@ const styles = StyleSheet.create({
   flagStyle: {
     height: 32,
     width: 38,
-    borderRadius: 4,
+    borderRadius: SPACING.xs,
   },
 });
