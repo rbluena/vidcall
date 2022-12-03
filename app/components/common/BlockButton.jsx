@@ -14,7 +14,6 @@ const BlockButton = ({
 }) => {
   let stylingLabel = {};
   let stylingWrapper = {};
-  let stylingIndicator = {};
 
   if (variant === 'primary') {
     stylingWrapper = {
@@ -33,11 +32,6 @@ const BlockButton = ({
       ...stylingLabel,
       color: outlined ? COLORS.primary[900] : COLORS.slate[0],
     };
-
-    stylingIndicator = {
-      ...stylingIndicator,
-      color: outlined ? COLORS.primary[900] : COLORS.slate[0],
-    };
   }
 
   return (
@@ -50,7 +44,10 @@ const BlockButton = ({
       }}
       {...rest}>
       {showLoader ? (
-        <ActivityIndicator style={[styles.indicator, stylingIndicator]} />
+        <ActivityIndicator
+          color={outlined ? COLORS.primary[900] : COLORS.slate[0]}
+          style={[styles.indicator]}
+        />
       ) : (
         <Text style={[styles.label, stylingLabel]}>{label}</Text>
       )}
@@ -89,7 +86,6 @@ const styles = StyleSheet.create({
   label: {
     textAlign: 'center',
     color: COLORS.slate[0],
-    fontWeight: 'bold',
     fontSize: FONT_SIZE.m,
   },
   indicator: {},
