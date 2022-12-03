@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Text } from '~/app/components/common';
+import { SCREEN } from '~/app/constants';
 
 const ScreenHeader = ({ heading, subheading }) => {
   return (
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
+    paddingHorizontal: SCREEN.horizontalPadding,
     paddingVertical: 54,
   },
   heading: {
