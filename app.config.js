@@ -7,7 +7,7 @@ module.exports = {
   icon: './assets/images/icon.png',
   userInterfaceStyle: 'light',
   splash: {
-    image: './assets/images/splash.png',
+    image: './assets/images/splash_hd.png',
     resizeMode: 'contain',
     backgroundColor: '#ffffff',
   },
@@ -20,7 +20,7 @@ module.exports = {
   },
   android: {
     adaptiveIcon: {
-      foregroundImage: './assets/images/adaptive-icon.png',
+      foregroundImage: './assets/images/adaptive-icon_510.png',
       backgroundColor: '#FFFFFF',
     },
     package: 'com.rbluena.vidcall',
