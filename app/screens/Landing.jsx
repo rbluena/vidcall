@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 import Logo from '~/app/components/common/Logo';
 import { SCREEN } from '~/app/constants';
-import { COLORS, FONT_SIZE } from '~/app/style/theme';
+import { COLORS, FONT_SIZE, SPACING } from '~/app/style/theme';
 import { BlockButton, Text } from '~/app/components/common';
 
 const Landing = () => {
@@ -9,11 +9,16 @@ const Landing = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Logo />
-        <Text style={styles.logoText}>Vidcall</Text>
+        <Text variant="muted" style={styles.logoText}>
+          Vidcall
+        </Text>
       </View>
 
       <View style={styles.footer}>
         <BlockButton label="Continue" />
+        <Text align="center" variant="muted">
+          By tapping continue button, you agree and accept our terms and policy.
+        </Text>
       </View>
     </View>
   );
@@ -30,11 +35,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: SCREEN.width,
     height: SCREEN.height * 0.6,
+    paddingTop: SPACING.xxl,
   },
   logoText: {
-    fontSize: FONT_SIZE.xxxl,
-    fontWeight: 'bold',
+    fontSize: FONT_SIZE.xl,
+    fontWeight: '300',
     textAlign: 'center',
+    letterSpacing: SPACING.s,
+    marginTop: SPACING.s,
     textTransform: 'uppercase',
   },
   footer: {

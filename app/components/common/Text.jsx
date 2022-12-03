@@ -1,6 +1,6 @@
 import { Text as NativeText, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import { FONT_SIZE } from '~/app/style/theme';
+import { COLORS, FONT_SIZE } from '~/app/style/theme';
 
 const fontKeysArray = Object.keys(FONT_SIZE);
 
@@ -12,14 +12,22 @@ const Text = ({
   style: externalStyle = {},
   ...rest
 }) => {
-  const styled = {
-    ...styles.text,
+  let styled = {
     fontSize: FONT_SIZE[fontSize],
+    textAlign: align,
     ...externalStyle,
   };
 
+  if (variant === 'muted') {
+    styled = { ...styled, color: COLORS.slate[400] };
+  }
+
+  if (variant === 'primary') {
+    styled = { ...styled, color: COLORS.primary[600] };
+  }
+
   return (
-    <NativeText style={[styled]} {...rest}>
+    <NativeText style={[styles.text, styled]} {...rest}>
       {children}
     </NativeText>
   );
