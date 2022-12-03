@@ -12,8 +12,12 @@ export const COLORS = {
     800: '#1e293b',
     900: '#0f172a',
   },
-  primary: {},
-  secondary: {},
+  primary: {
+    900: '#5A028F',
+  },
+  secondary: {
+    900: '#D4005C',
+  },
   danger: {},
 };
 

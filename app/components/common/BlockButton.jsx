@@ -6,6 +6,7 @@ import { COLORS, FONT_SIZE, SPACING } from '~/app/style/theme';
 const BlockButton = ({
   label,
   onPress,
+  variant,
   outlined,
   showLoader,
   style: externalStyle,
@@ -13,12 +14,30 @@ const BlockButton = ({
 }) => {
   let stylingLabel = {};
   let stylingWrapper = {};
-  let styleIndicator = {};
+  let stylingIndicator = {};
 
-  if (outlined) {
-    stylingWrapper = { ...stylingWrapper, borderColor: COLORS.slate[200] };
-    styleIndicator = { ...styleIndicator, color: COLORS.slate[800] };
-    stylingLabel = { ...stylingLabel, color: COLORS.slate[800] };
+  if (variant === 'primary') {
+    stylingWrapper = {
+      ...stylingWrapper,
+      ...(outlined
+        ? {
+            borderColor: COLORS.primary[900],
+            borderWidth: 2,
+          }
+        : {
+            backgroundColor: COLORS.primary[900],
+          }),
+    };
+
+    stylingLabel = {
+      ...stylingLabel,
+      color: outlined ? COLORS.primary[900] : COLORS.slate[0],
+    };
+
+    stylingIndicator = {
+      ...stylingIndicator,
+      color: outlined ? COLORS.primary[900] : COLORS.slate[0],
+    };
   }
 
   return (
@@ -26,12 +45,12 @@ const BlockButton = ({
       onPress={onPress}
       style={[styles.wrapper, stylingWrapper]}
       android_ripple={{
-        radius: SPACING.s,
-        color: COLORS.slate[100],
+        radius: SPACING.xs,
+        color: outlined ? COLORS.primary[900] : COLORS.slate[100],
       }}
       {...rest}>
       {showLoader ? (
-        <ActivityIndicator style={[styles.indicator, styleIndicator]} />
+        <ActivityIndicator style={[styles.indicator, stylingIndicator]} />
       ) : (
         <Text style={[styles.label, stylingLabel]}>{label}</Text>
       )}
@@ -41,6 +60,7 @@ const BlockButton = ({
 
 BlockButton.defaultProps = {
   onPress: () => {},
+  variant: 'primary',
   outlined: false,
   showLoader: false,
   style: {},
@@ -48,6 +68,7 @@ BlockButton.defaultProps = {
 
 BlockButton.propTypes = {
   label: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(['primary', 'secondary', 'disabled']),
   onPress: PropTypes.func,
   outlined: PropTypes.bool,
   showLoader: PropTypes.bool,
@@ -64,8 +85,6 @@ const styles = StyleSheet.create({
     marginHorizontal: SCREEN.width * 0.1,
     borderRadius: 32,
     marginBottom: 16,
-    backgroundColor: 'blue',
-    color: 'blue',
   },
   label: {
     textAlign: 'center',

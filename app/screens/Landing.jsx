@@ -9,13 +9,17 @@ const Landing = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Logo />
-        <Text variant="muted" style={styles.logoText}>
+        <Text variant="primary" style={styles.logoText}>
           Vidcall
+        </Text>
+        <Text variant="muted" align="center">
+          Best way to have online conversation with anyone from allover the
+          world!
         </Text>
       </View>
 
       <View style={styles.footer}>
-        <BlockButton label="Continue" />
+        <BlockButton label="Continue" outlined />
         <Text align="center" variant="muted">
           By tapping continue button, you agree and accept our terms and policy.
         </Text>
@@ -34,16 +38,18 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
     width: SCREEN.width,
+    paddingHorizontal: SCREEN.width * 0.1,
     height: SCREEN.height * 0.6,
-    paddingTop: SPACING.xxl,
+    paddingTop: SCREEN.height * 0.2,
   },
   logoText: {
     fontSize: FONT_SIZE.xl,
-    fontWeight: '300',
+    fontWeight: '700',
     textAlign: 'center',
     letterSpacing: SPACING.s,
-    marginTop: SPACING.s,
+    marginVertical: SPACING.s,
     textTransform: 'uppercase',
+    color: COLORS.slate[600],
   },
   footer: {
     width: SCREEN.width,
