@@ -8,7 +8,8 @@ import { FIREBASE_STORAGES } from '~/app/constants';
  * @returns public path to the uploaded image.
  */
 export async function uploadProfileImage({ uid, filePath }) {
-  if (!uid || !filePath) throw Error('You should a proper filePath and uid!');
+  if (!uid || !filePath)
+    throw Error('You should add a proper filePath and uid!');
 
   const STORAGE_REFERENCE = `${FIREBASE_STORAGES.profiles.images}/${uid}`;
 

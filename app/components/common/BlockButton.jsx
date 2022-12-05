@@ -9,6 +9,7 @@ const BlockButton = ({
   variant,
   outlined,
   showLoader,
+  disabled,
   style: externalStyle,
   ...rest
 }) => {
@@ -37,7 +38,14 @@ const BlockButton = ({
   return (
     <Pressable
       onPress={onPress}
-      style={[styles.wrapper, stylingWrapper]}
+      style={[
+        styles.wrapper,
+        stylingWrapper,
+        disabled && {
+          backgroundColor: COLORS.slate[400],
+          color: COLORS.slate[900],
+        },
+      ]}
       android_ripple={{
         radius: SPACING.xs,
         color: outlined ? COLORS.primary[900] : COLORS.slate[100],
@@ -58,6 +66,7 @@ const BlockButton = ({
 BlockButton.defaultProps = {
   onPress: () => {},
   variant: 'primary',
+  disabled: false,
   outlined: false,
   showLoader: false,
   style: {},
@@ -67,6 +76,7 @@ BlockButton.propTypes = {
   label: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(['primary', 'secondary', 'disabled']),
   onPress: PropTypes.func,
+  disabled: PropTypes.bool,
   outlined: PropTypes.bool,
   showLoader: PropTypes.bool,
   style: PropTypes.objectOf(PropTypes.any),

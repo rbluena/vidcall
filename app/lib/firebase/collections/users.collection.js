@@ -3,7 +3,7 @@ import firestore from '@react-native-firebase/firestore';
 
 export const usersRef = firestore().collection('Users');
 
-const { currentUser } = auth();
+export const { currentUser } = auth();
 
 /**
  * Updating authenticated user and adding new user details to the database
@@ -11,7 +11,6 @@ const { currentUser } = auth();
  */
 export async function createNewUser(data) {
   await currentUser.updateProfile({
-    userId: currentUser?.uid,
     displayName: data.displayName,
     photoURL: data.photoURL,
   });

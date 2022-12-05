@@ -26,6 +26,8 @@ const TextInput = ({
       <Input
         style={[styles.textInput, { textAlign: align }]}
         onChangeText={onChangeText}
+        placeholder={placeholder}
+        value={value}
         {...rest}
       />
     </View>
@@ -56,7 +58,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.slate[200],
     borderColor: COLORS.slate[200],
     textAlign: 'center',
-    borderRadius: SPACING.xs,
+    borderRadius: SPACING.s,
+    borderBottomWidth: 2,
+    borderBottomColor: COLORS.primary[900],
   },
   textInput: {
     fontSize: 20,

@@ -13,6 +13,7 @@ import { PhoneInput, TextInput } from '~/app/components/form';
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('+255');
+  const [country, setCountry] = useState('Tanzania');
   const [code, setCode] = useState('');
   const [showVerificationInput, setShowVerificationInput] = useState(false);
   const [confirm, setConfirm] = useState(null);
@@ -59,7 +60,7 @@ const Register = () => {
 
       try {
         await confirm?.confirm(code);
-        navigation.navigate('Account');
+        navigation.navigate('Account', { country });
       } catch (error) {
         toastMessage('Invalid verification code, please try again!');
       } finally {
@@ -100,23 +101,26 @@ const Register = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScreenHeader heading="Register" subheading="Create a new account" />
+      <View>
+        <ScreenHeader heading="Register" subheading="Create a new account" />
 
-      <View style={styles.formContainer}>
-        {!showVerificationInput ? (
-          <PhoneInput
-            ref={phoneInputRef}
-            onChange={setPhoneNumber}
-            value={phoneNumber}
-          />
-        ) : (
-          <TextInput
-            placeholder="Enter code"
-            onChangeText={setCode}
-            value={code}
-            align="center"
-          />
-        )}
+        <View style={styles.formContainer}>
+          {!showVerificationInput ? (
+            <PhoneInput
+              ref={phoneInputRef}
+              onChange={setPhoneNumber}
+              value={phoneNumber}
+              onChangeCountry={setCountry}
+            />
+          ) : (
+            <TextInput
+              placeholder="Enter code"
+              onChangeText={setCode}
+              value={code}
+              align="center"
+            />
+          )}
+        </View>
       </View>
 
       <BlockButton
@@ -138,7 +142,6 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     paddingHorizontal: SCREEN.horizontalPadding,
-    height: SCREEN.height * 0.5,
   },
   blockButton: {
     backgroundColor: 'blue',

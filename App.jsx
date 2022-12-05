@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <AppLoader>
-      {!isNewUser ? <AuthNavigator /> : <UserNavigator />}
+      {isNewUser ? <AuthNavigator /> : <UserNavigator />}
       <StatusBar style="auto" />
     </AppLoader>
   );
