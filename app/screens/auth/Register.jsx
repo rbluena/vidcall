@@ -31,7 +31,7 @@ const Register = () => {
       setShowVerificationInput(true);
     } catch (error) {
       if (error.message) {
-        toastMessage('Please enter verification code from the message!');
+        toastMessage(error.message);
       }
       setShowVerificationInput(false);
     } finally {
@@ -103,7 +103,7 @@ const Register = () => {
       <ScreenHeader heading="Register" subheading="Create a new account" />
 
       <View style={styles.formContainer}>
-        {showVerificationInput ? (
+        {!showVerificationInput ? (
           <PhoneInput
             ref={phoneInputRef}
             onChange={setPhoneNumber}
