@@ -6,32 +6,56 @@ import { COLORS, FONT_SIZE, SPACING } from '~/app/style/theme';
 const BlockButton = ({
   label,
   onPress,
+  variant,
   outlined,
   showLoader,
+  disabled,
   style: externalStyle,
   ...rest
 }) => {
   let stylingLabel = {};
   let stylingWrapper = {};
-  let styleIndicator = {};
 
-  if (outlined) {
-    stylingWrapper = { ...stylingWrapper, borderColor: COLORS.slate[200] };
-    styleIndicator = { ...styleIndicator, color: COLORS.slate[800] };
-    stylingLabel = { ...stylingLabel, color: COLORS.slate[800] };
+  if (variant === 'primary') {
+    stylingWrapper = {
+      ...stylingWrapper,
+      ...(outlined
+        ? {
+            borderColor: COLORS.primary[900],
+            borderWidth: 2,
+          }
+        : {
+            backgroundColor: COLORS.primary[900],
+          }),
+    };
+
+    stylingLabel = {
+      ...stylingLabel,
+      color: outlined ? COLORS.primary[900] : COLORS.slate[0],
+    };
   }
 
   return (
     <Pressable
       onPress={onPress}
-      style={[styles.wrapper, stylingWrapper]}
+      style={[
+        styles.wrapper,
+        stylingWrapper,
+        disabled && {
+          backgroundColor: COLORS.slate[400],
+          color: COLORS.slate[900],
+        },
+      ]}
       android_ripple={{
-        radius: SPACING.s,
-        color: COLORS.slate[100],
+        radius: SPACING.xs,
+        color: outlined ? COLORS.primary[900] : COLORS.slate[100],
       }}
       {...rest}>
       {showLoader ? (
-        <ActivityIndicator style={[styles.indicator, styleIndicator]} />
+        <ActivityIndicator
+          color={outlined ? COLORS.primary[900] : COLORS.slate[0]}
+          style={[styles.indicator]}
+        />
       ) : (
         <Text style={[styles.label, stylingLabel]}>{label}</Text>
       )}
@@ -41,6 +65,8 @@ const BlockButton = ({
 
 BlockButton.defaultProps = {
   onPress: () => {},
+  variant: 'primary',
+  disabled: false,
   outlined: false,
   showLoader: false,
   style: {},
@@ -48,7 +74,9 @@ BlockButton.defaultProps = {
 
 BlockButton.propTypes = {
   label: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(['primary', 'secondary', 'disabled']),
   onPress: PropTypes.func,
+  disabled: PropTypes.bool,
   outlined: PropTypes.bool,
   showLoader: PropTypes.bool,
   style: PropTypes.objectOf(PropTypes.any),
@@ -64,13 +92,10 @@ const styles = StyleSheet.create({
     marginHorizontal: SCREEN.width * 0.1,
     borderRadius: 32,
     marginBottom: 16,
-    backgroundColor: 'blue',
-    color: 'blue',
   },
   label: {
     textAlign: 'center',
     color: COLORS.slate[0],
-    fontWeight: 'bold',
     fontSize: FONT_SIZE.m,
   },
   indicator: {},

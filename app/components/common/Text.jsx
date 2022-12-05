@@ -23,7 +23,7 @@ const Text = ({
   }
 
   if (variant === 'primary') {
-    styled = { ...styled, color: COLORS.primary[600] };
+    styled = { ...styled, color: COLORS.primary[900] };
   }
 
   return (
