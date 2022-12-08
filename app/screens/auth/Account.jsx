@@ -55,15 +55,15 @@ const Account = ({ routes }) => {
       return;
     }
 
-    const userData = {
-      displayName,
-      userId: currentUser.uid,
-      phoneNumber: currentUser.phoneNumber,
-      occupation,
-      country,
-    };
-
     try {
+      const userData = {
+        displayName,
+        userId: currentUser.uid,
+        phoneNumber: currentUser.phoneNumber,
+        occupation,
+        country,
+      };
+
       if (profileImage?.length > 0) {
         userData.photoURL = await uploadProfileImage({
           uid: currentUser.uid,
@@ -108,6 +108,9 @@ const Account = ({ routes }) => {
             placeholder="Name"
             onChangeText={setDisplayName}
             value={displayName}
+            autoCapitalize="words"
+            autoComplete="name"
+            autoCorrect={false}
             autoFocus
           />
 
@@ -123,6 +126,7 @@ const Account = ({ routes }) => {
       <BlockButton
         label="Complete"
         disabled={isLoading}
+        showLoader={isLoading}
         onPress={saveProfileDetails}
       />
     </SafeAreaProvider>

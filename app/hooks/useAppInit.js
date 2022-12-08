@@ -16,7 +16,7 @@ export default function useAppInit() {
         console.log(error);
       } finally {
         if (!initializing) {
-          setIsLoadingComplete(false);
+          setIsLoadingComplete(true);
           SplashScreen.hideAsync();
         }
       }
@@ -27,6 +27,7 @@ export default function useAppInit() {
 
   return {
     isLoadingComplete,
-    isNewUser: currentUser?.displayName?.length === 0,
+    currentUser,
+    isCompleteRegisteredUser: currentUser?.displayName?.length > 0,
   };
 }

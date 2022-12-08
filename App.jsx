@@ -5,11 +5,15 @@ import useAppInit from '~/app/hooks/useAppInit';
 import { AuthNavigator, UserNavigator } from '~/app/navigations';
 
 export default function App() {
-  const { isNewUser } = useAppInit();
+  const { isCompleteRegisteredUser, isLoadingComplete } = useAppInit();
 
   return (
     <AppLoader>
-      {isNewUser ? <AuthNavigator /> : <UserNavigator />}
+      {isCompleteRegisteredUser && isLoadingComplete ? (
+        <UserNavigator />
+      ) : (
+        <AuthNavigator />
+      )}
       <StatusBar style="auto" />
     </AppLoader>
   );
