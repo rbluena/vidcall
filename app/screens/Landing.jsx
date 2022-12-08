@@ -5,9 +5,20 @@ import { SCREEN } from '~/app/constants';
 import { COLORS, FONT_SIZE, SPACING } from '~/app/style/theme';
 import { BlockButton, Text } from '~/app/components/common';
 import { useNavigation } from '@react-navigation/native';
+import requestAllPermissions from '../utils/permissions';
 
 const Landing = () => {
   const navigation = useNavigation();
+
+  const goNextStep = async () => {
+    try {
+      await requestAllPermissions();
+      navigation.navigate('Register');
+    } catch (error) {
+      // TODO: Log errors to sentry service
+      console.log(error);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -23,11 +34,7 @@ const Landing = () => {
       </View>
 
       <View style={styles.footer}>
-        <BlockButton
-          label="Continue"
-          outlined
-          onPress={() => navigation.navigate('Register')}
-        />
+        <BlockButton label="Continue" outlined onPress={goNextStep} />
         <Text align="center" variant="muted">
           By tapping continue button, you agree and accept our terms and policy.
         </Text>

@@ -24,7 +24,7 @@ module.exports = {
       backgroundColor: '#FFFFFF',
     },
     package: 'com.rbluena.vidcall',
-    permissions: ['CAMERA', 'READ_CONTACTS', 'STORAGE', 'READ_PHONE_STATE'],
+    permissions: ['CAMERA', 'RECORD_AUDIO', 'READ_CONTACTS'],
   },
   plugins: [
     '@react-native-firebase/app',

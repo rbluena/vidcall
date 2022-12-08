@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, PermissionsAndroid } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -16,3 +16,9 @@ export const FIREBASE_STORAGES = {
     qrCodes: 'profiles/qr-codes',
   },
 };
+
+export const REQUIRED_PERMISSIONS = [
+  PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+  PermissionsAndroid.PERMISSIONS.CAMERA,
+  PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
+];
